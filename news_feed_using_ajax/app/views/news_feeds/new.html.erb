@@ -1,0 +1,28 @@
+<h1>Add new news feed</h1>
+<%= form_for(@news_feed) do |f| %>
+  <% if @news_feed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@news_feed.errors.count, "error") %> prohibited this news feed from being saved:</h2>
+
+      <ul>
+      <% @news_feed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

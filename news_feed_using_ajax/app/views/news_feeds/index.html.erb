@@ -1,0 +1,21 @@
+<h1>News Feeds</h1>
+<%= link_to "Refresh", url_for(:action => "get_new_data"), :id => "refresh_news" %>
+<div id="news_feed_list">
+  <%= render "list_news_feeds", :news_feeds => @news_feeds %>
+</div>
+<script>
+$(function (){
+  $("#refresh_news").on("click", function (event){
+    event.preventDefault();
+    url = $("#refresh_news").attr("href")
+    $.get(url, function (data, status){
+      if(status == "success")
+      {
+        $("#news_feed_list").html(data);
+      }
+    });
+    false;
+  });
+});
+</script>
+
